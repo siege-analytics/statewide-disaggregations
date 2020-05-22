@@ -6,7 +6,7 @@ import json
 
 
 
-def load_all_voterfiles_from_directory(target_directory):
+def load_all_voterfiles_from_directory(target_directory=ACS_SUBDIRECTORY):
 
     # loop through all states
 

@@ -29,7 +29,7 @@ load-census-shapefiles:
 # 5
 load-census-acs:
 	docker-compose exec python \
-		python3 python/load_voters.py
+		python3 python/load_census_acs.py
 
 # 6
 run-jobs:

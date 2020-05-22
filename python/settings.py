@@ -99,24 +99,9 @@ psycopg2_connection_string = "host={host} user={user} password={password} dbname
 
 # Voterfile parameters
 
-VOTER_FILE = "cleaned_jamaa_with_precincts_{state_abbreviation}.{suffix}"
-VOTER_FILE_DELIMITER = '\t'
-VOTER_FILE_SUFFIX = 'txt'
-UNLOADABLE_ROWS = {}
-VOTER_FILE_BATCH_SIZE = 10000
-VOTER_FILE_STARTING_RECORD_NUMBER = 0
-VOTER_FILE_COL_PRIMARY_KEY = 'voter_file_vanid'
-VOTER_FILE_COL_X = 'longitude'
-VOTER_FILE_COL_Y = 'latitude'
-VOTER_FILE_COL_GEOCODE_PRECISION = None
-VOTER_FILE_COL_DESIRED_GEOM = 'precinctname_'
-VOTER_FILE_COL_HD = 'hd'
-VOTER_FILE_COL_SD = 'sd'
-VOTER_FILE_COL_CD = 'cd'
-VOTER_FILE_COL_COUNTY_NAME = 'city'
-VOTER_FILE_COL_COUNTY_FIPS = None
-VOTER_FILE_MINIMUM_NUMBER_OF_RECORDS_FOR_POLYGONIZATION = 0
-VOTER_FILE_ENCODING = 'latin1'
+ACS_FILE_DELIMITER = '\t'
+ACS_FILE_SUFFIX = 'csv'
+ACS_FILE_BATCH_SIZE = 10000
 
 # Database Tables, Indices, Etc.
 

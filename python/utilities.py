@@ -1,5 +1,6 @@
 from settings import *
 
+import sys
 import subprocess
 import zipfile
 from sqlalchemy import create_engine
@@ -26,7 +27,7 @@ def download_file(url, local_filename):
 
         request_status_code = r.status_code
         if request_status_code > 400:
-            logging.error("Invalid URL {url} returns code {status_cod}".format(**{'url': url, 'status_code': request_status_code}))
+            logging.error("Invalid URL {url} returns code {status_code}".format(**{'url': url, 'status_code': request_status_code}))
             return False
 
         else:
