@@ -32,7 +32,7 @@ def download_census_acs_files():
                                                                                                'PATTERN']})
 
             logging.info(info_message)
-            new_geography_directory = pathlib.Path(ACS_SUBDIRECTORY) / census_year / geography
+            new_geography_directory = pathlib.Path(ACS_SUBDIRECTORY) /census_year/ geography
             pathlib.Path(new_geography_directory).mkdir(parents=True, exist_ok=True)
             logging.info("Found or created a directory for: {path}".format(**{'path': str(new_geography_directory)}))
 

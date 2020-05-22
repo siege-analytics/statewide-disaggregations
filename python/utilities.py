@@ -1,10 +1,11 @@
-import sys
+from settings import *
+
 import subprocess
 import zipfile
-from settings import *
 from sqlalchemy import create_engine
 from sqlalchemy.engine.url import URL
 import requests
+from tqdm import tqdm
 
 logging.basicConfig(level=logging.INFO)
 
@@ -19,24 +20,31 @@ def run_subprocess(command_list):
 
 
 def download_file(url, local_filename):
-    # resume_header = {'Range': f'bytes={pathlib.Path(local_filename).stat().st_size}-'}
-    # reference for output
-    # https://towardsdatascience.com/how-to-download-files-using-python-part-2-19b95be4cdb5
 
-    try:
-        with requests.get(url, stream=True, allow_redirects=True) as r:
 
-            request_status_code = r.status_code
-            # check if url is valid
-            if request_status_code > 400:
-                logging.error("{url} is not valid, status code {status_code}".format(**{'url':url, 'status_code':         exc_type, exc_obj, exc_tb = sys.exc_info()
-        fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
-                            pbar.update(len(chunk))
-            return local_filename
-    except Exception as e:
-        exc_type, exc_obj, exc_tb = sys.exc_info()
-        fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
-        logging.error(exc_type, fname, exc_tb.tb_lineno)
+    with requests.get(url, stream=True, allow_redirects=True) as r:
+
+        request_status_code = r.status_code
+        if request_status_code > 400:
+            logging.error("Invalid URL {url} returns code {status_cod}".format(**{'url': url, 'status_code': request_status_code}))
+            return False
+
+        else:
+            total_size = int(r.headers.get('content-length'))
+            initial_pos = 0
+
+            if r:
+                with open(local_filename, 'wb') as f:
+                    with tqdm(total=total_size, unit_scale=True, desc=local_filename, initial=initial_pos,
+                              ascii=True) as pbar:
+                        for chunk in r.iter_content(chunk_size=1024):
+                            if chunk:  # filter out keep-alive new chunks
+                                f.write(chunk)
+                                pbar.update(len(chunk))
+                return local_filename
+            else:
+                return False
+
 
 
 def unzip_file_to_its_own_directory(path_to_zipfile, new_dir_name=None, new_dir_parent=None):

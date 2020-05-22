@@ -62,7 +62,7 @@ DOWNLOAD_SINGLE = False
 DOWNLOAD_STATE_BY_STATE = True
 CENSUS_ACS_FILES_TO_DOWNLOAD = {
     'CVAP_2018_ETHNICITY': {
-        'URL': "https://www2.census.gov/programs-surveys/decennial/rdo/datasets/{year}/{year}-cvap/CVAP_2014-{year}_ACS_csv_files.zip?#",
+        'URL': "https://www2.census.gov/programs-surveys/decennial/rdo/datasets/{year}/{year}-cvap/CVAP_2014-{year}_ACS_csv_files.zip",
         'PATTERN': "SINGLE"}
 }
 
