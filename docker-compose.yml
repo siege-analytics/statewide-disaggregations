@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  postgis:
+    image: mdillon/postgis:10
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=postgrespassword
+      - POSTGRES_USER=postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data:/data
+      - ./work.sql:/opt/work.sql
+  python:
+    build: .
+    environment:
+      - POSTGRES_HOST=postgis
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=postgrespassword
+      - POSTGRES_USER=postgres
+    volumes:
+      - ./:/opt/echoplex
