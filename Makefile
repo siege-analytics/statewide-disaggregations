@@ -15,7 +15,6 @@ fetch-census-shapefiles:
 	docker-compose exec python \
 		python3 python/fetch_census_shapefiles.py
 
-
 #3
 fetch-census-acs:
 	docker-compose exec python \

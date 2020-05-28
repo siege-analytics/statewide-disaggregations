@@ -3,8 +3,15 @@ drop table if exists cit_est_pivot;
 drop table if exists cvap_est_pivot;
 drop table if exists geo_lookup;
 
+
+-- The table name for the inserted CVAP file is cvap_master
+
+
+-- Create a table called geolookup
+
 select geoname, geoid into geo_lookup from cvap_master;
 
+-- Creates a table that selects the data from cvap_master and orders it in the
 SELECT * into cit_est_pivot
 FROM crosstab( $$select geoid, lntitle, cit_est from cvap_master order by 1,2
 $$)

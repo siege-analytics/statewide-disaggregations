@@ -5,7 +5,7 @@
 1. Yindra Cotman-Dixon, Blackbox NV
 2. Jamaa Bickley-King, [NVM](https://www.newvirginiamajority.org)
 3. Julie Goldberg, [Empower Engine](http://wwww.empowerengine.com)
-4. Eric Aspengren 
+4. Eric Aspengren, [Street Level Strategies](http://streetlevelstrat.com)
 
 ## Requirements
 

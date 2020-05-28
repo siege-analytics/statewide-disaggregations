@@ -21,7 +21,7 @@ COPY sql_templates/*.* /opt/echoplex/
 
 # This will get overwritten in the Docker Compose
 ADD dbconfig_template.py /opt/echoplex/dbconfig.py
-WORKDIR /opt/echoplex
+WORKDIR /opt/statewide_disaggregations
 
 ENTRYPOINT entrypoint.sh
 CMD python3 --version
