@@ -55,3 +55,4 @@ from cit_est_pivot
 
 left join cvap_est_pivot
 on cit_est_pivot.geoid = cvap_est_pivot.geoid
+
