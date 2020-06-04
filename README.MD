@@ -29,3 +29,28 @@
     * TABBLOCK
     * BG
 
+## How to use this code
+
+I have built a _Makefile_ that has some shortcuts.  Essentially, you are going to use Docker containers to execute Python and PSQL so that you can avoid having to configure both on your computers.
+
+1. Build the containers
+    
+    ```make build```
+    
+    ```make up```
+
+2. Ensure that everything is set up correctly in the filesystem
+    
+    ```make ensure-paths```
+
+3. Get the data from the Census
+
+    ```make fetch-census-shapefiles```
+    ```make fetch-census-shapefiles```
+
+4. Load the shapefiles and ACS from the Census
+
+    ```make load-census-shapefiles```
+    ```make load-census-acs```
+
+Once these data are in, you can use this the same way you would use any other VM.
