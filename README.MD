@@ -46,11 +46,13 @@ I have built a _Makefile_ that has some shortcuts.  Essentially, you are going t
 3. Get the data from the Census
 
     ```make fetch-census-shapefiles```
+    
     ```make fetch-census-shapefiles```
 
 4. Load the shapefiles and ACS from the Census
 
     ```make load-census-shapefiles```
+    
     ```make load-census-acs```
 
 Once these data are in, you can use this the same way you would use any other VM.
