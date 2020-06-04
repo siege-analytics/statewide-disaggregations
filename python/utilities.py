@@ -21,30 +21,23 @@ def run_subprocess(command_list):
 
 
 def download_file(url, local_filename):
+    resume_header = {'Range': f'bytes={pathlib.Path(local_filename).stat().st_size}-'}
 
+    with requests.get(url, stream=True, headers=resume_header, allow_redirects=True) as r:
 
-    with requests.get(url, stream=True, allow_redirects=True) as r:
-
-        request_status_code = r.status_code
-        if request_status_code > 400:
-            logging.error("Invalid URL {url} returns code {status_code}".format(**{'url': url, 'status_code': request_status_code}))
-            return False
-
-        else:
+        if r.ok:
             total_size = int(r.headers.get('content-length'))
             initial_pos = 0
-
-            if r:
-                with open(local_filename, 'wb') as f:
-                    with tqdm(total=total_size, unit_scale=True, desc=local_filename, initial=initial_pos,
-                              ascii=True) as pbar:
-                        for chunk in r.iter_content(chunk_size=1024):
-                            if chunk:  # filter out keep-alive new chunks
-                                f.write(chunk)
-                                pbar.update(len(chunk))
-                return local_filename
-            else:
-                return False
+            with open(local_filename, 'ab') as f:
+                with tqdm(total=total_size, unit_scale=True, desc=local_filename, initial=initial_pos,
+                          ascii=True) as pbar:
+                    for chunk in r.iter_content(chunk_size=8192):
+                        if chunk:  # filter out keep-alive new chunks
+                            f.write(chunk)
+                            pbar.update(len(chunk))
+            return local_filename
+        else:
+            return False
 
 
 

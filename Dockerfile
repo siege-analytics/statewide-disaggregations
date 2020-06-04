@@ -15,9 +15,10 @@ ADD entrypoint.sh /usr/local/bin/
 RUN pip3 install -r /tmp/requirements.txt
 
 # Set up our run environment
-RUN mkdir -p /opt/echoplex
-COPY python/*.py /opt/echoplex/
-COPY sql_templates/*.* /opt/echoplex/
+RUN mkdir -p /opt/statewide_disaggregations/python
+RUN mkdir -p /opt/statewide_disaggregations/sql_templates
+COPY python/*.py /opt/statewide_disaggregations/python/
+COPY sql_templates/*.* /opt/statewide_disaggregations/sql_templates/
 
 # This will get overwritten in the Docker Compose
 ADD dbconfig_template.py /opt/echoplex/dbconfig.py
