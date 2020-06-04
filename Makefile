@@ -33,13 +33,13 @@ load-census-acs:
 	docker-compose exec python \
 		python3 python/load_census_acs.py
 
-# 6
-run-jobs:
-	docker-compose exec python \
-		python3 run_jobs.py
-
-# 7
-export-shapefiles:
-	docker-compose exec python \
-		python3 export_results.py
+## 6
+#run-jobs:
+#	docker-compose exec python \
+#		python3 run_jobs.py
+#
+## 7
+#export-shapefiles:
+#	docker-compose exec python \
+#		python3 export_results.py
 
