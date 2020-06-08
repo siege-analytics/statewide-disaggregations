@@ -6,7 +6,7 @@ up:
 
 build:
 	docker-compose stop
-	docker-compose build
+	docker-compose build && docker-compose up -d
 
 # 1
 ensure-paths:

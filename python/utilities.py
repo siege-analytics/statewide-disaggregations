@@ -21,9 +21,8 @@ def run_subprocess(command_list):
 
 
 def download_file(url, local_filename):
-    resume_header = {'Range': f'bytes={pathlib.Path(local_filename).stat().st_size}-'}
 
-    with requests.get(url, stream=True, headers=resume_header, allow_redirects=True) as r:
+    with requests.get(url, stream=True, allow_redirects=True) as r:
 
         if r.ok:
             total_size = int(r.headers.get('content-length'))
